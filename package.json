@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "hellow",
+  "version": "1.0.0",
+  "description": "A lightweight agentic framework for AI IDEs - install agents and skills as slash commands",
+  "keywords": [
+    "ai",
+    "agents",
+    "skills",
+    "bmad",
+    "framework",
+    "ide",
+    "assistant",
+    "slash-commands",
+    "agent-skills",
+    "claude",
+    "cursor",
+    "augment",
+    "gemini",
+    "codex"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rweb22/hellow.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "main": "tools/installer/hellow-cli.js",
+  "bin": {
+    "hellow": "tools/installer/hellow-cli.js"
+  },
+  "scripts": {
+    "install:local": "node tools/installer/hellow-cli.js install",
+    "format:check": "prettier --check \"**/*.{js,json,yaml,yml,md}\"",
+    "format:fix": "prettier --write \"**/*.{js,json,yaml,yml,md}\"",
+    "lint": "eslint . --ext .js,.yaml --max-warnings=0",
+    "lint:fix": "eslint . --ext .js,.yaml --fix",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "test": "node test/test-installation.js",
+    "validate": "npm run format:check && npm run lint && npm run lint:md"
+  },
+  "dependencies": {
+    "@clack/core": "^1.3.1",
+    "@clack/prompts": "^1.4.0",
+    "chalk": "^4.1.2",
+    "commander": "^14.0.0",
+    "glob": "^11.0.3",
+    "ignore": "^7.0.5",
+    "js-yaml": "^4.1.0",
+    "picocolors": "^1.1.1",
+    "semver": "^7.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "markdownlint-cli2": "^0.19.1",
+    "prettier": "^3.7.4"
+  },
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
