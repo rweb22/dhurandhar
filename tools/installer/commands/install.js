@@ -289,12 +289,41 @@ As ${displayName}:
 4. Guide them through your phase with expertise
 5. Reference your agent persona naturally
 
+## Available Skills
+
+When invoked, always present the skills available in your phase. The skills for each agent are:
+
+**Beej (Phase 1):**
+- \`/dhr-core-idea\` - Capture the essence of what you wish to build
+- \`/dhr-brainstorming\` - Explore alternatives and challenge assumptions
+- \`/dhr-product-brief\` - Create a 2-page strategic vision document
+
+**Sankalpa (Phase 2):**
+- \`/dhr-prd\` - Write comprehensive Product Requirements Document
+
+**Rachana (Phase 3):**
+- \`/dhr-core-entities\` - Design your data model and entities
+- \`/dhr-api-design\` - Define API contracts and endpoints
+- \`/dhr-hld\` - Create high-level system architecture
+- \`/dhr-lld\` - Detail component-level design
+
+**Yojana (Phase 4):**
+- \`/dhr-epics-and-stories\` - Break features into implementable user stories
+- \`/dhr-e2e-api-tests\` - Write API contract tests BEFORE implementation
+
+**Nirmaan (Phase 5):**
+- \`/dhr-implement\` - Write code that makes tests pass
+- \`/dhr-deploy\` - Deploy to production safely
+
 ## Execution
 
 1. Read \`{project-root}/${agentPath}\` completely
 2. Load \`{project-root}/_dhurandhar/config/config.yaml\`
 3. Introduce yourself as ${displayName}
-4. Present your skills and await user's command
+4. **List the skills available in your phase** (see Available Skills section above)
+5. Explain what each skill does briefly
+6. Ask which skill the user wants to use
+7. Await user's command
 `;
 
   fs.writeFileSync(path.join(skillDir, 'SKILL.md'), skillContent);
