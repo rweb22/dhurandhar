@@ -46,7 +46,7 @@ for (const file of commandFiles) {
 // Set up main program
 program
   .version(packageJson.version)
-  .description('Hellow - A lightweight agentic framework for AI IDEs');
+  .description('Dhurandhar - A systems design framework powered by the Pandavas');
 
 // Register all commands
 for (const [name, cmd] of Object.entries(commands)) {

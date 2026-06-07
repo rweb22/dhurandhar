@@ -1,26 +1,36 @@
-# Hellow - Architecture Overview
+# Dhurandhar - Architecture Overview
 
-## What is Hellow?
+## What is Dhurandhar?
 
-Hellow is an **installable agentic framework** that brings AI agents and workflows into AI IDEs as slash commands. It follows the BMAD-Method pattern for structured, repeatable AI behavior.
+Dhurandhar is a **systems design framework** for startup developers that guides you from idea to deployment following the classic systems design pattern. It installs into your project and provides AI-powered workflows as slash commands in your IDE.
 
 ## Core Concepts
 
 ### 1. Installable Framework
 
-Unlike standalone applications, Hellow **installs into your project**:
+Unlike standalone applications, Dhurandhar **installs into your project**:
 
 ```bash
-npx hellow install
+npx dhurandhar install
 ```
 
-This creates a `_hellow/` directory with:
-- Skills (workflow definitions)
-- Agent personas
-- Configuration files
-- Domain-specific data
+This creates two directories:
 
-And copies skills to your IDE's skills directory (`.agents/skills/`, `.claude/skills/`, etc.) where they become slash commands.
+**`_dhurandhar/`** - Framework files (committed to git):
+- Agent persona definitions
+- Reference data
+- Configuration
+- Customizations
+
+**`_dhurandhar-output/`** - Generated artifacts (committed to git):
+- Design documents (PRD, architecture, etc.)
+- Epic and story files
+- Decision logs
+- Planning artifacts
+
+**`.agents/skills/`** - IDE skills directory:
+- Skills copied here become slash commands in your IDE
+- Works with 25+ AI IDEs (Claude Code, Cursor, Augment, etc.)
 
 ### 2. Skills
 
@@ -143,71 +153,123 @@ Skills reference **data** as needed:
 After installation:
 ```
 your-project/
-├── .agents/skills/              # IDE-specific skills directory
-│   ├── agent-expert/            # Agent launcher
-│   │   └── SKILL.md
-│   └── my-workflow/             # Workflow skill
-│       ├── SKILL.md
-│       ├── customize.toml
-│       └── steps/
-└── _hellow/                     # Framework data
-    ├── config/
-    │   └── config.yaml          # User configuration
-    ├── custom/                  # Config overrides
-    ├── agents/                  # Agent definitions
-    ├── data/                    # Domain data
-    └── scripts/
-        └── resolve_customization.py
+├── _dhurandhar/                 # Framework files (committed)
+│   ├── agents/                  # Agent persona definitions
+│   │   ├── architect.md
+│   │   ├── api-designer.md
+│   │   ├── data-modeler.md
+│   │   ├── builder.md
+│   │   └── reviewer.md
+│   ├── data/                    # Reference data
+│   ├── scripts/                 # Utility scripts
+│   │   └── resolve_customization.py
+│   ├── config/
+│   │   └── config.yaml          # User configuration
+│   └── custom/                  # Config overrides
+│       └── *.user.toml          # User-specific (gitignored)
+│
+├── _dhurandhar-output/          # Generated artifacts (committed)
+│   ├── phase-1-ideation/
+│   │   ├── core-idea.md
+│   │   ├── brainstorming-report.md
+│   │   └── product-brief.md
+│   ├── phase-2-requirements/
+│   │   └── prd.md
+│   ├── phase-3-system-design/
+│   │   ├── core-entities.md
+│   │   ├── api-design.md
+│   │   ├── hld.md
+│   │   ├── lld.md
+│   │   └── schemas/
+│   ├── phase-4-planning/
+│   │   ├── epics/
+│   │   ├── stories/
+│   │   └── implementation-plan.md
+│   └── decision-log.md
+│
+├── .agents/skills/              # IDE skills directory
+│   ├── core-idea/
+│   ├── brainstorming/
+│   ├── product-brief/
+│   ├── prd/
+│   ├── core-entities/
+│   ├── api-design/
+│   ├── hld/
+│   ├── lld/
+│   ├── epics-and-stories/
+│   ├── e2e-api-tests/
+│   ├── implement/
+│   └── deploy/
+│
+├── tests/api/                   # E2E API tests (from Phase 4)
+│   ├── auth/
+│   ├── products/
+│   └── orders/
+│
+└── src/                         # Your implementation
+    └── ...
 ```
 
 ## How It Works
 
-### 1. Developer Creates Content
-
-Developer writes agents and skills in `src/`:
-
-**src/agents/expert.md:**
-```markdown
-# Expert Consultant
-
-## Role
-You are an expert in [domain].
-
-## Communication Style
-Be clear, helpful, and professional.
-```
-
-**src/skills/my-workflow/SKILL.md:**
-```markdown
----
-name: my-workflow
-description: 'Guide users through a task'
----
-
-# My Workflow
-
-Ask user for inputs, process, deliver results.
-```
-
-### 2. User Installs Framework
+### 1. Installation
 
 User runs:
 ```bash
-npx hellow install --ide universal
+npx dhurandhar install
 ```
 
-Installer creates:
-- `_hellow/` with data and config
-- `.agents/skills/agent-expert/` with launcher
-- `.agents/skills/my-workflow/` with workflow
+Installer:
+1. Detects IDE (or asks user)
+2. Creates `_dhurandhar/` directory with framework files
+3. Creates `_dhurandhar-output/` for generated artifacts
+4. Copies skills to `.agents/skills/` (or IDE-specific directory)
+5. Sets up configuration
 
-### 3. User Invokes in IDE
+### 2. User Follows the Flow
 
-User opens IDE and types:
-- `/agent-expert` → Loads expert persona
-- `/my-workflow` → Runs workflow
+User opens IDE and follows the phases:
 
-AI reads SKILL.md and executes the defined workflow.
+**Phase 1: Ideation**
+```bash
+/core-idea           # Creates _dhurandhar-output/phase-1-ideation/core-idea.md
+/brainstorming       # Creates brainstorming-report.md
+/product-brief       # Creates product-brief.md
+```
+
+**Phase 2: Requirements**
+```bash
+/prd                 # Creates _dhurandhar-output/phase-2-requirements/prd.md
+```
+
+**Phase 3: System Design**
+```bash
+/core-entities       # Creates _dhurandhar-output/phase-3-system-design/core-entities.md + schemas/
+/api-design          # Creates api-design.md
+/hld                 # Creates hld.md
+/lld                 # Creates lld.md
+```
+
+**Phase 4: Planning**
+```bash
+/epics-and-stories   # Creates _dhurandhar-output/phase-4-planning/epics/ and stories/
+/e2e-api-tests       # Creates tests/api/ with RED tests
+```
+
+**Phase 5: Implementation**
+```bash
+/implement           # Make tests GREEN
+/deploy              # Ship to production
+```
+
+### 3. AI Executes Workflows
+
+AI reads SKILL.md for each command and:
+- Guides user through structured steps
+- Asks questions to gather information
+- Generates artifacts in `_dhurandhar-output/`
+- Updates decision log
+- Validates outputs
 
 ## Key Benefits
 

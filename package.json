@@ -1,18 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "hellow",
-  "version": "1.0.0",
-  "description": "A lightweight agentic framework for AI IDEs - install agents and skills as slash commands",
+  "name": "dhurandhar",
+  "version": "0.1.0",
+  "description": "A systems design framework for startup developers - build better software faster",
   "keywords": [
-    "ai",
+    "systems-design",
+    "software-development",
+    "framework",
+    "startup",
+    "api-testing",
+    "test-driven-development",
+    "architecture",
     "agents",
     "skills",
-    "bmad",
-    "framework",
-    "ide",
-    "assistant",
-    "slash-commands",
-    "agent-skills",
+    "ai-ide",
     "claude",
     "cursor",
     "augment",
@@ -21,16 +22,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rweb22/hellow.git"
+    "url": "git+https://github.com/rweb22/dhurandhar.git"
   },
   "license": "MIT",
   "author": "",
-  "main": "tools/installer/hellow-cli.js",
+  "main": "tools/installer/dhurandhar-cli.js",
   "bin": {
-    "hellow": "tools/installer/hellow-cli.js"
+    "dhurandhar": "tools/installer/dhurandhar-cli.js"
   },
   "scripts": {
-    "install:local": "node tools/installer/hellow-cli.js install",
+    "install:local": "node tools/installer/dhurandhar-cli.js install",
     "format:check": "prettier --check \"**/*.{js,json,yaml,yml,md}\"",
     "format:fix": "prettier --write \"**/*.{js,json,yaml,yml,md}\"",
     "lint": "eslint . --ext .js,.yaml --max-warnings=0",

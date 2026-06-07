@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const prompts = require('../prompts');
 
 const command = 'install';
-const description = 'Install Hellow framework into your project';
+const description = 'Install Dhurandhar framework into your project';
 
 const options = [
   ['-d, --directory <path>', 'Target directory (default: current directory)'],
@@ -13,7 +13,7 @@ const options = [
 
 async function action(opts) {
   try {
-    await prompts.intro('👋 Hellow Framework Installation');
+    await prompts.intro('🏹 Dhurandhar Framework Installation');
 
     // Determine target directory
     const targetDir = opts.directory
@@ -37,7 +37,7 @@ async function action(opts) {
 async function installInteractive(targetDir, opts) {
   // Confirm directory
   const dirConfirm = await prompts.confirm({
-    message: `Install Hellow framework in ${targetDir}?`,
+    message: `Install Dhurandhar framework in ${targetDir}?`,
     initialValue: true,
   });
 
@@ -86,7 +86,7 @@ async function installInteractive(targetDir, opts) {
 
   // Perform installation
   const spinner = prompts.spinner();
-  spinner.start('Installing Hellow framework...');
+  spinner.start('Installing Dhurandhar framework...');
 
   await performInstallation(targetDir, {
     ide,
@@ -119,14 +119,14 @@ async function performInstallation(targetDir, config) {
     'gemini': '.gemini/skills',         // Gemini Code Assist (also supports .agents/skills)
     'codex': '.codex/skills',           // OpenAI Codex (also supports .agents/skills)
     'vscode': '.vscode/skills',         // VS Code / GitHub Copilot (also supports .agents/skills)
-    'other': '_hellow/skills',          // Fallback for manual setup
+    'other': '_dhurandhar/skills',      // Fallback for manual setup
   };
 
   const skillsRelativePath = ideSkillsDirs[config.ide] || ideSkillsDirs['universal'];
   const ideSkillsDir = path.join(targetDir, skillsRelativePath);
 
-  // Create _hellow directory structure
-  const dataDir = path.join(targetDir, '_hellow');
+  // Create _dhurandhar directory structure
+  const dataDir = path.join(targetDir, '_dhurandhar');
   const dirs = [
     dataDir,
     path.join(dataDir, 'config'),
@@ -144,28 +144,28 @@ async function performInstallation(targetDir, config) {
   }
 
   // Create config.yaml
-  const configContent = `# Hellow Framework Configuration
+  const configContent = `# Dhurandhar Framework Configuration
 user_name: "User"
 experience_level: "${config.experienceLevel}"
 communication_language: "en"
 document_output_language: "en"
-planning_artifacts: "_hellow/artifacts"
+planning_artifacts: "_dhurandhar-output"
 ide: "${config.ide}"
 skills_directory: "${skillsRelativePath}"
 `;
 
   fs.writeFileSync(path.join(dataDir, 'config', 'config.yaml'), configContent);
 
-  // Discover and install ALL agents
+  // Discover and install ALL agents (Pandavas)
   const srcAgentsDir = path.join(__dirname, '../../../src/agents');
   const agentFiles = fs.existsSync(srcAgentsDir)
-    ? fs.readdirSync(srcAgentsDir).filter((file) => file.endsWith('.md'))
+    ? fs.readdirSync(srcAgentsDir).filter((file) => file.endsWith('.md') && file !== 'README.md')
     : [];
 
   const installedAgents = [];
   for (const agentFile of agentFiles) {
     const agentName = path.basename(agentFile, '.md');
-    const skillName = `agent-${agentName}`;
+    const skillName = agentName; // Use simple name: yudhishthira, sahadeva, etc.
     const agentSkillDir = path.join(ideSkillsDir, skillName);
 
     // Create agent launcher skill
@@ -173,7 +173,7 @@ skills_directory: "${skillsRelativePath}"
     installedAgents.push(skillName);
   }
 
-  // Copy agents to _hellow for reference
+  // Copy agents to _dhurandhar for reference
   const targetAgentsDir = path.join(dataDir, 'agents');
   if (fs.existsSync(srcAgentsDir)) {
     copyDirectory(srcAgentsDir, targetAgentsDir);
@@ -236,55 +236,62 @@ function createAgentLauncherSkill(skillDir, agentName, dataDir) {
 
   // Get relative path from project root to agent file
   const agentFileName = `${agentName}.md`;
-  const agentPath = `_hellow/agents/${agentFileName}`;
+  const agentPath = `_dhurandhar/agents/${agentFileName}`;
+
+  // Get display name (capitalize first letter)
+  const displayName = agentName.charAt(0).toUpperCase() + agentName.slice(1);
 
   // Create SKILL.md that loads the agent persona
   const skillContent = `---
-name: agent-${agentName}
-description: 'Load the ${agentName.replace(/-/g, ' ')} agent persona. Use when the user asks to talk to the ${agentName.replace(/-/g, ' ')} or requests this agent.'
+name: ${agentName}
+description: 'Load ${displayName}, one of the five Pandava brothers. Call this agent when you want to work on their phase of development.'
 ---
 
-# ${agentName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} Agent
+# ${displayName} - Pandava Agent
 
-**You are now operating as the ${agentName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} agent.**
+**You are now ${displayName} from the Mahabharata.**
 
 ## Activation
 
 Load and fully embody the agent persona from: \`{project-root}/${agentPath}\`
 
 Read the entire file and:
-1. Adopt the persona, role, and communication style defined
-2. Understand your expertise and available skills
-3. Stay in character for the entire conversation
-4. Use the communication style appropriate to the user's experience level
+1. **Adopt the full persona** - Speak as ${displayName}, reference events from the Mahabharata
+2. **Understand your phase** - Know which phase of development you handle
+3. **Know your skills** - Present the skills available in your phase
+4. **Stay in character** - Heavy Mahabharata voice throughout
 
 ## Configuration
 
-Load the user configuration from \`{project-root}/_hellow/config/config.yaml\` to understand:
+Load user configuration from \`{project-root}/_dhurandhar/config/config.yaml\`:
 - User's name (\`user_name\`)
 - Experience level (\`experience_level\`)
-- Communication language (\`communication_language\`)
+- Output directory (\`planning_artifacts\`)
 
-## Your Responsibilities
+## The Five Pandavas
 
-As this agent:
-- Greet the user by name
-- Explain your role and what you can help with
-- Present available skills you can guide them through
-- Stay in character and maintain the persona
-- Adapt your communication to their experience level
+You are one of five brothers:
+- **Yudhishthira** (युधिष्ठिर) - Phase 1: Ideation
+- **Sahadeva** (सहदेव) - Phase 2: Requirements
+- **Arjuna** (अर्जुन) - Phase 3: System Design
+- **Nakula** (नकुल) - Phase 4: Implementation Planning
+- **Bhima** (भीम) - Phase 5: Implementation & Deployment
 
-## Available Skills
+## Your Duties
 
-After loading your persona, check what skills are available for your domain and present them to the user.
+As ${displayName}:
+1. Greet the user in character
+2. Explain your role in the development process
+3. Present your available skills
+4. Guide them through your phase with wisdom
+5. Reference the Mahabharata naturally
 
 ## Execution
 
-1. Load \`{project-root}/${agentPath}\`
-2. Load \`{project-root}/_hellow/config/config.yaml\`
-3. Greet the user as this agent
-4. Present your capabilities
-5. Wait for user input
+1. Read \`{project-root}/${agentPath}\` completely
+2. Load \`{project-root}/_dhurandhar/config/config.yaml\`
+3. Introduce yourself as ${displayName}
+4. Present your skills and await user's command
 `;
 
   fs.writeFileSync(path.join(skillDir, 'SKILL.md'), skillContent);

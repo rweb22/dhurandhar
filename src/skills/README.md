@@ -1,102 +1,124 @@
-# Skills
+# Dhurandhar Skills
 
-This directory contains workflow skills that guide users through tasks.
+This directory contains the **12 core skills** that power the Dhurandhar framework, mapped to the five Pandava agents.
 
-## What are Skills?
+## The Five Phases
 
-Skills are step-by-step workflows defined in markdown. They help users accomplish specific tasks in a structured way, following the BMAD-Method pattern.
+Each phase is handled by one Pandava agent with multiple skills:
+
+### Phase 1: Ideation & Discovery (युधिष्ठिर Yudhishthira)
+**Agent:** `/yudhishthira` - The Dharmaraja who decides what ought to be done
+**Skills:**
+- `/core-idea` - Capture the one-sentence vision
+- `/brainstorming` - Explore alternatives and edge cases
+- `/product-brief` - Create 2-page strategic vision
+
+### Phase 2: Requirements (सहदेव Sahadeva)
+**Agent:** `/sahadeva` - The foresighted one who defines with precision
+**Skills:**
+- `/prd` - Product Requirements Document with measurable requirements
+
+### Phase 3: System Design (अर्जुन Arjuna)
+**Agent:** `/arjuna` - The master craftsman who designs with focus
+**Skills:**
+- `/core-entities` - Data model, entities, relationships, schemas
+- `/api-design` - API contracts, endpoints, protocols
+- `/hld` - High-level design, system architecture
+- `/lld` - Low-level design, classes, modules, algorithms
+
+### Phase 4: Implementation Planning (नकुल Nakula)
+**Agent:** `/nakula` - The beautiful organizer who creates elegant plans
+**Skills:**
+- `/epics-and-stories` - Break design into implementation tasks
+- `/e2e-api-tests` - Write tests BEFORE implementation (contract-first)
+
+### Phase 5: Implementation & Deployment (भीम Bhima)
+**Agent:** `/bhima` - The powerful builder who ships with strength
+**Skills:**
+- `/implement` - Write code, make tests pass, build the system
+- `/deploy` - Ship to production, monitor, launch
+
+## Complete Workflow
+
+```
+Yudhishthira decides → /core-idea → /brainstorming → /product-brief
+    ↓
+Sahadeva foresees → /prd (requirements)
+    ↓
+Arjuna designs → /core-entities → /api-design → /hld → /lld
+    ↓
+Nakula plans → /epics-and-stories → /e2e-api-tests
+    ↓
+Bhima builds → /implement → /deploy → SHIPPED
+```
 
 ## Skill Structure
 
-Each skill is a directory containing:
+Each skill directory contains a single `SKILL.md` file with:
+- **Frontmatter metadata** (name, description, phase, agent, output)
+- **Purpose** and context
+- **Before you begin** checklist
+- **Step-by-step workflow**
+- **Output specification**
+- **Agent wisdom** (Mahabharata-themed guidance)
 
+Example:
 ```
-my-skill/
-├── SKILL.md              # Main skill definition
-├── customize.toml        # Configuration (optional)
-└── steps/                # Workflow steps (optional)
-    ├── step-01-gather.md
-    ├── step-02-process.md
-    └── step-03-deliver.md
-```
-
-## Creating a Skill
-
-### 1. Create the Directory
-
-```bash
-mkdir src/skills/my-skill
-```
-
-### 2. Create SKILL.md
-
-```markdown
----
-name: my-skill
-description: 'A brief description of what this skill does'
----
-
-# My Skill Name
-
-## Purpose
-This skill helps users accomplish [goal].
-
-## Workflow
-
-### Step 1: Gather Information
-Ask the user for:
-- Input 1
-- Input 2
-- Input 3
-
-### Step 2: Process
-Do something with the inputs.
-
-### Step 3: Deliver
-Provide the result to the user.
-
-## Usage
-This skill is activated when the user types `/my-skill`.
+src/skills/
+├── core-idea/
+│   └── SKILL.md
+├── brainstorming/
+│   └── SKILL.md
+├── product-brief/
+│   └── SKILL.md
+...
 ```
 
-### 3. Add Steps (Optional)
+## Output Locations
 
-For complex workflows, break into separate step files:
+All skills write to `_dhurandhar-output/` in the project:
 
-**steps/step-01-gather.md:**
-```markdown
-# Step 1: Gather Information
-
-Ask the user for the following information:
-- Name
-- Email
-- Requirements
-
-Store their responses and proceed to step 2.
+```
+_dhurandhar-output/
+├── phase-1-ideation/
+│   ├── core-idea.md
+│   ├── brainstorming-report.md
+│   └── product-brief.md
+├── phase-2-requirements/
+│   └── prd.md
+├── phase-3-system-design/
+│   ├── core-entities.md
+│   ├── api-design.md
+│   ├── hld.md
+│   ├── lld.md
+│   └── schemas/
+├── phase-4-implementation-planning/
+│   ├── epics-and-stories.md
+│   ├── e2e-tests.md
+│   └── test-suites/
+└── phase-5-implementation/
+    └── [your actual code]
 ```
 
-### 4. Add Configuration (Optional)
+## Key Principles
 
-**customize.toml:**
-```toml
-[base]
-skill_name = "my-skill"
-version = "1.0.0"
-
-[options]
-auto_proceed = false
-verbose_output = true
-```
+1. **Sequential Phases** - Complete each phase before moving to the next
+2. **Contract-First** - Write tests (Phase 4) before implementation (Phase 5)
+3. **Document-Driven** - Each skill produces a specific artifact
+4. **Heavy Character Voice** - Agents speak as Pandavas, reference Mahabharata events
+5. **Startup Speed** - Focused on rapid iteration, not enterprise bureaucracy
 
 ## Installation
 
-When you run `hellow install`, the installer will:
-1. Find all directories in `src/skills/`
-2. Copy each to the IDE skills directory
-3. Make them available as slash commands
+When you run `dhurandhar install`, the installer will:
+1. Create `~/.augment/skills/` directory structure
+2. Copy all skill definitions
+3. Register skills with Augment/Cursor/Claude IDE
+4. Make them available as slash commands
 
-Users can then type `/my-skill` to activate the workflow.
+## Usage
 
-## Examples
-
-See the parent project (if this is a fork) for example skill implementations.
+1. Start with Phase 1: `/yudhishthira` then `/core-idea`
+2. Progress through phases sequentially
+3. Each skill reads outputs from previous skills
+4. Complete all phases to ship production software
