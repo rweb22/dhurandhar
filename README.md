@@ -82,10 +82,12 @@ In your AI IDE (in the directory where you installed), follow the phases:
 
 **Phase 2: Requirements (Sankalpa - संकल्प)**
 - `/dhr-sankalpa` - Load the agent (The Resolve)
+- `/dhr-requirements-brainstorming` - Explore requirement approaches
 - `/dhr-prd` - Product requirements
 
 **Phase 3: System Design (Rachana - रचना)** ⭐
 - `/dhr-rachana` - Load the agent (The Architect)
+- `/dhr-design-brainstorming` - Explore architectural alternatives
 - `/dhr-core-entities` - Design data model
 - `/dhr-api-design` - Define API contracts
 - `/dhr-hld` - High-level architecture
@@ -93,11 +95,13 @@ In your AI IDE (in the directory where you installed), follow the phases:
 
 **Phase 4: Implementation Planning (Yojana - योजना)** ⭐
 - `/dhr-yojana` - Load the agent (The Planner)
+- `/dhr-planning-brainstorming` - Explore implementation strategies
 - `/dhr-epics-and-stories` - Break into work units
 - `/dhr-e2e-api-tests` - Write tests FIRST
 
 **Phase 5: Ship (Nirmaan - निर्माण)**
 - `/dhr-nirmaan` - Load the agent (The Builder)
+- `/dhr-implementation-brainstorming` - Explore technical approaches
 - `/dhr-implement` - Make tests pass
 - `/dhr-deploy` - Ship to production
 
