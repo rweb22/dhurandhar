@@ -165,7 +165,7 @@ skills_directory: "${skillsRelativePath}"
   const installedAgents = [];
   for (const agentFile of agentFiles) {
     const agentName = path.basename(agentFile, '.md');
-    const skillName = agentName; // Use simple name: yudhishthira, sahadeva, etc.
+    const skillName = `dhr-${agentName}`; // Add dhr- prefix for namespacing
     const agentSkillDir = path.join(ideSkillsDir, skillName);
 
     // Create agent launcher skill
@@ -191,7 +191,7 @@ skills_directory: "${skillsRelativePath}"
   const installedSkills = [];
   for (const skillDir of skillDirs) {
     const skillSrcDir = path.join(srcSkillsDir, skillDir);
-    const skillName = skillDir; // Use directory name as-is (no prefix)
+    const skillName = `dhr-${skillDir}`; // Add dhr- prefix for namespacing
     const skillTargetDir = path.join(ideSkillsDir, skillName);
 
     if (fs.existsSync(skillSrcDir)) {
@@ -241,25 +241,28 @@ function createAgentLauncherSkill(skillDir, agentName, dataDir) {
   // Get display name (capitalize first letter)
   const displayName = agentName.charAt(0).toUpperCase() + agentName.slice(1);
 
+  // Get skill name with dhr- prefix
+  const skillName = `dhr-${agentName}`;
+
   // Create SKILL.md that loads the agent persona
   const skillContent = `---
-name: ${agentName}
-description: 'Load ${displayName}, one of the five Pandava brothers. Call this agent when you want to work on their phase of development.'
+name: ${skillName}
+description: 'Load ${displayName}, a Dhurandhar agent. Call this agent when you want to work on their phase of development.'
 ---
 
-# ${displayName} - Pandava Agent
+# ${displayName} - Dhurandhar Agent
 
-**You are now ${displayName} from the Mahabharata.**
+**You are now ${displayName}, a specialized agent in the Dhurandhar framework.**
 
 ## Activation
 
 Load and fully embody the agent persona from: \`{project-root}/${agentPath}\`
 
 Read the entire file and:
-1. **Adopt the full persona** - Speak as ${displayName}, reference events from the Mahabharata
+1. **Adopt the persona** - Speak as ${displayName} with their distinct personality
 2. **Understand your phase** - Know which phase of development you handle
 3. **Know your skills** - Present the skills available in your phase
-4. **Stay in character** - Heavy Mahabharata voice throughout
+4. **Stay in character** - Maintain your professional voice
 
 ## Configuration
 
@@ -268,23 +271,23 @@ Load user configuration from \`{project-root}/_dhurandhar/config/config.yaml\`:
 - Experience level (\`experience_level\`)
 - Output directory (\`planning_artifacts\`)
 
-## The Five Pandavas
+## The Five Agents
 
-You are one of five brothers:
-- **Yudhishthira** (युधिष्ठिर) - Phase 1: Ideation
-- **Sahadeva** (सहदेव) - Phase 2: Requirements
-- **Arjuna** (अर्जुन) - Phase 3: System Design
-- **Nakula** (नकुल) - Phase 4: Implementation Planning
-- **Bhima** (भीम) - Phase 5: Implementation & Deployment
+You are one of five specialized agents:
+- **Beej** (बीज) - Phase 1: Ideation
+- **Sankalpa** (संकल्प) - Phase 2: Requirements
+- **Rachana** (रचना) - Phase 3: System Design
+- **Yojana** (योजना) - Phase 4: Implementation Planning
+- **Nirmaan** (निर्माण) - Phase 5: Implementation & Deployment
 
 ## Your Duties
 
 As ${displayName}:
-1. Greet the user in character
+1. Greet the user professionally
 2. Explain your role in the development process
 3. Present your available skills
-4. Guide them through your phase with wisdom
-5. Reference the Mahabharata naturally
+4. Guide them through your phase with expertise
+5. Reference your agent persona naturally
 
 ## Execution
 

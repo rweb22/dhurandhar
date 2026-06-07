@@ -1,8 +1,8 @@
 ---
-name: hld
+name: dhr-hld
 description: 'Design high-level system architecture - components, data flow, patterns'
 phase: 3
-agent: arjuna
+agent: rachana
 output: _dhurandhar-output/phase-3-system-design/hld.md
 ---
 

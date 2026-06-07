@@ -74,28 +74,32 @@ npm run install:local -- -i universal # For most other IDEs (default)
 
 In your AI IDE (in the directory where you installed), follow the phases:
 
-**Phase 1: Ideation (Yudhishthira)**
-- `/yudhishthira` - Load the agent
-- `/core-idea` - Capture problem/solution
-- `/brainstorming` - Explore alternatives
-- `/product-brief` - 2-page vision doc
+**Phase 1: Ideation (Beej - बीज)**
+- `/dhr-beej` - Load the agent (The Seed)
+- `/dhr-core-idea` - Capture problem/solution
+- `/dhr-brainstorming` - Explore alternatives
+- `/dhr-product-brief` - 2-page vision doc
 
-**Phase 2: Requirements**
-- `/prd` - Product requirements
+**Phase 2: Requirements (Sankalpa - संकल्प)**
+- `/dhr-sankalpa` - Load the agent (The Resolve)
+- `/dhr-prd` - Product requirements
 
-**Phase 3: System Design** ⭐
-- `/core-entities` - Design data model
-- `/api-design` - Define API contracts
-- `/hld` - High-level architecture
-- `/lld` - Component design
+**Phase 3: System Design (Rachana - रचना)** ⭐
+- `/dhr-rachana` - Load the agent (The Architect)
+- `/dhr-core-entities` - Design data model
+- `/dhr-api-design` - Define API contracts
+- `/dhr-hld` - High-level architecture
+- `/dhr-lld` - Component design
 
-**Phase 4: Implementation Planning** ⭐
-- `/epics-and-stories` - Break into work units
-- `/e2e-api-tests` - Write tests FIRST
+**Phase 4: Implementation Planning (Yojana - योजना)** ⭐
+- `/dhr-yojana` - Load the agent (The Planner)
+- `/dhr-epics-and-stories` - Break into work units
+- `/dhr-e2e-api-tests` - Write tests FIRST
 
-**Phase 5: Ship**
-- `/implement` - Make tests pass
-- `/deploy` - Ship to production
+**Phase 5: Ship (Nirmaan - निर्माण)**
+- `/dhr-nirmaan` - Load the agent (The Builder)
+- `/dhr-implement` - Make tests pass
+- `/dhr-deploy` - Ship to production
 
 ## 🎯 Why Dhurandhar?
 

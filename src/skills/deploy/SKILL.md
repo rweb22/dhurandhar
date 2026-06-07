@@ -1,8 +1,8 @@
 ---
-name: deploy
+name: dhr-deploy
 description: 'Ship to production - build, package, deploy, monitor'
 phase: 5
-agent: bhima
+agent: nirmaan
 output: Production deployment + monitoring
 ---
 

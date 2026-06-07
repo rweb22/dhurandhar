@@ -1,8 +1,8 @@
 ---
-name: implement
+name: dhr-implement
 description: 'Write code, make tests pass, build the system with raw power'
 phase: 5
-agent: bhima
+agent: nirmaan
 output: Working software + passing tests
 ---
 

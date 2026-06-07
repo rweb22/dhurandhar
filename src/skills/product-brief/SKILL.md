@@ -1,8 +1,8 @@
 ---
-name: product-brief
+name: dhr-product-brief
 description: 'Create a 2-page strategic vision document that declares your intent'
 phase: 1
-agent: yudhishthira
+agent: beej
 output: _dhurandhar-output/phase-1-ideation/product-brief.md
 ---
 

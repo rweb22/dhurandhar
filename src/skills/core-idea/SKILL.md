@@ -1,8 +1,8 @@
 ---
-name: core-idea
+name: dhr-core-idea
 description: 'Capture the essence of what you wish to build - the one-sentence vision'
 phase: 1
-agent: yudhishthira
+agent: beej
 output: _dhurandhar-output/phase-1-ideation/core-idea.md
 ---
 

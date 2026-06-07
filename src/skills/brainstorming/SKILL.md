@@ -1,8 +1,8 @@
 ---
-name: brainstorming
+name: dhr-brainstorming
 description: 'Explore alternatives, edge cases, and different approaches to your idea'
 phase: 1
-agent: yudhishthira
+agent: beej
 output: _dhurandhar-output/phase-1-ideation/brainstorming-report.md
 ---
 

@@ -1,8 +1,8 @@
 ---
-name: e2e-api-tests
+name: dhr-e2e-api-tests
 description: 'Write end-to-end API tests BEFORE implementation - contract-first development'
 phase: 4
-agent: nakula
+agent: yojana
 output: _dhurandhar-output/phase-4-implementation-planning/e2e-tests.md
 ---
 

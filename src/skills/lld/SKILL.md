@@ -1,8 +1,8 @@
 ---
-name: lld
+name: dhr-lld
 description: 'Design low-level component details - classes, modules, algorithms'
 phase: 3
-agent: arjuna
+agent: rachana
 output: _dhurandhar-output/phase-3-system-design/lld.md
 ---
 

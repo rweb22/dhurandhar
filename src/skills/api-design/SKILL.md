@@ -1,8 +1,8 @@
 ---
-name: api-design
+name: dhr-api-design
 description: 'Define API contracts - endpoints, payloads, protocols'
 phase: 3
-agent: arjuna
+agent: rachana
 output: _dhurandhar-output/phase-3-system-design/api-design.md
 ---
 

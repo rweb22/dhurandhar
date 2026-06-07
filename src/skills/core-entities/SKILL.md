@@ -1,8 +1,8 @@
 ---
-name: core-entities
+name: dhr-core-entities
 description: 'Design the data model - entities, relationships, schemas'
 phase: 3
-agent: arjuna
+agent: rachana
 output: _dhurandhar-output/phase-3-system-design/core-entities.md
 ---
 

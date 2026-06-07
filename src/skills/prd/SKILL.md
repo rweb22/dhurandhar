@@ -1,8 +1,8 @@
 ---
-name: prd
+name: dhr-prd
 description: 'Define precise, measurable requirements with foresight'
 phase: 2
-agent: sahadeva
+agent: sankalpa
 output: _dhurandhar-output/phase-2-requirements/prd.md
 ---
 

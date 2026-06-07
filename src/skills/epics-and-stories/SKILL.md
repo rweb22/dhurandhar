@@ -1,8 +1,8 @@
 ---
-name: epics-and-stories
+name: dhr-epics-and-stories
 description: 'Break design into implementation tasks - epics, stories, and tickets'
 phase: 4
-agent: nakula
+agent: yojana
 output: _dhurandhar-output/phase-4-implementation-planning/epics-and-stories.md
 ---
 
